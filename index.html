@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Little Question ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            overflow: hidden;
+        }
+
+        .container {
+            background: white;
+            padding: 45px 30px;
+            width: 90%;
+            max-width: 430px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .heart {
+            font-size: 65px;
+            margin-bottom: 20px;
+            animation: beat 1s infinite;
+        }
+
+        @keyframes beat {
+            50% { transform: scale(1.2); }
+        }
+
+        h1 {
+            color: #e84370;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #666;
+            font-size: 17px;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            min-height: 50px;
+        }
+
+        button {
+            border: none;
+            padding: 13px 28px;
+            border-radius: 30px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        #yesBtn {
+            background: #ff477e;
+            color: white;
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.1);
+        }
+
+        #noBtn {
+            background: #ddd;
+            color: #555;
+        }
+
+        #message {
+            display: none;
+            margin-top: 25px;
+            color: #e84370;
+            font-size: 21px;
+            font-weight: bold;
+            line-height: 1.6;
+        }
+
+        .show {
+            display: block !important;
+            animation: appear 0.6s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="heart">❤️</div>
+
+        <h1>Hey there my love!</h1>
+
+        <p>
+            I have a very important question for you...
+            Will send me tirries? 🥺💕
+        </p>
+
+        <div class="buttons">
+            <button id="yesBtn">YES ❤️</button>
+            <button id="noBtn">NO 🙈</button>
+        </div>
+
+        <div id="message">
+            YAAAAAY!!! 😍❤️<br>
+            I knew you'd say YES!<br>
+            am waiting for them.
+            I love you! 💕😘
+        </div>
+
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById("yesBtn");
+        const noBtn = document.getElementById("noBtn");
+        const message = document.getElementById("message");
+
+        function moveNoButton() {
+            const maxX = window.innerWidth - noBtn.offsetWidth - 10;
+            const maxY = window.innerHeight - noBtn.offsetHeight - 10;
+
+            const randomX = Math.max(10, Math.random() * maxX);
+            const randomY = Math.max(10, Math.random() * maxY);
+
+            noBtn.style.position = "fixed";
+            noBtn.style.left = randomX + "px";
+            noBtn.style.top = randomY + "px";
+        }
+
+        noBtn.addEventListener("mouseenter", moveNoButton);
+
+        noBtn.addEventListener("touchstart", (event) => {
+            event.preventDefault();
+            moveNoButton();
+        });
+
+        yesBtn.addEventListener("click", () => {
+            message.classList.add("show");
+
+            yesBtn.style.display = "none";
+            noBtn.style.display = "none";
+        });
+    </script>
+
+</body>
+</html>
